@@ -1,5 +1,13 @@
-RewriteEngine on
-RewriteCond $1 !^(index\.php|resources|robots\.txt)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+<FilesMatch "\.(php4|php5|php3|php2|php|phtml)$">
+SetHandler application/x-httpd-alt-php56___lsphp
+</FilesMatch>
+
+RewriteEngine on
+
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteRule ^(.*)$ index.php/$1 [L,QSA]
