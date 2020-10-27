@@ -43,7 +43,7 @@ class penerimaan_sapi extends CI_Controller {
 	public function upload_potong() {
 		if($this->session->userdata('hak_akses') == "awo"||$this->session->userdata('hak_akses') == "admin") {
 			$config['upload_path'] = './upload/';
-			$config['allowed_types']= 'xls||csv';
+			$config['allowed_types']= 'xls||csv'; 
 			$config['encrypt_name']	= TRUE;
 			$config['remove_spaces']	= TRUE;	
 			$config['max_size']     = '0';
@@ -64,38 +64,99 @@ class penerimaan_sapi extends CI_Controller {
 															NULL,
 															TRUE,
 															FALSE);
-							$rfid_impC=$rowData[0][0];
-							$tanggal_impC=PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][1],  "YYYY-mm-dd");
-							$jam_impC=PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][2],  "hh:mm");	
-							$qDt_before = $this->App_model->get_qDt_before1($id_awo_impC,$rfid_impC);
-							$no_pengiriman = $qDt_before->no_pengiriman;
-							// $qCount = $this->db->query("SELECT COUNT(id_pengiriman_detail)AS jml,pengiriman_detail.* FROM pengiriman JOIN mst_rph_user ON pengiriman.id_rph=mst_rph_user.id_rph JOIN pengiriman_detail 
-							// 							ON pengiriman_detail.id_pengiriman=pengiriman.id_pengiriman WHERE mst_rph_user.id_awo='$id_awo_impC' 
-							// 							AND pengiriman_detail.rfid='$rfid_impC'")->row();    
-							if($qDt_before->jml>0){
-								$qValidRFID = $this->App_model->get_qValidRFID1($no_pengiriman,$rfid_impC,$id_awo_impC);
-								if($qValidRFID->jml==0){
-									$inDT['id_pengiriman'] = $qDt_before->id_pengiriman;
-									$inDT['nota'] = $qDt_before->nota;
-									$inDT['eartag'] = $qDt_before->eartag;
-									$inDT['beast_id'] = $qDt_before->beast_id;
-									$inDT['shipment'] = $qDt_before->shipment;
-									$inDT['material_description'] = $qDt_before->material_description;
-									$inDT['rfid'] = $qDt_before->rfid;
-									$inDT['berat'] = $qDt_before->berat;
-									$inDT['customer'] = $qDt_before->customer;
-									$inDT['no_kendaraan'] = $qDt_before->no_kendaraan;
-									$inDT['tanggal_terimaDt'] =  $tanggal_impC;
-									$inDT['jam_terimaDt'] =  $jam_impC;
-									$this->db->insert("penerimaan_detail",$inDT);
-									$this->db->update("pengiriman_detail",array('status_terima' => '1'),array('id_pengiriman_detail' => $qDt_before->id_pengiriman_detail));
-									
-									$in['status_terima'] = '1';
-									$in['tanggal_terima'] = $tanggal_impC;
-									$in['jam_terima'] = $jam_impC;
-									// $in['keterangan_terima'] = $this->input->post("keterangan_terima");
-									$this->db->update("pengiriman",$in,array('id_pengiriman' => $qDt_before->id_pengiriman));
-									$count_id++;
+							$data_impC=$rowData[0][0];
+							$last_char = substr($data_impC,-1); 
+							// if($last_char==";"){
+							// 	$rfid_impC=substr($data_impC,0,16);
+							// 	$tanggal = substr($data_impC,-20,-10);
+							// 	$waktu = substr($data_impC,-9,-1);
+							// 	$jam_impC=str_replace('.', ':', $waktu);
+							// 	echo "RFID : ".$rfid_impC; echo " Tanggal terima : ".$tanggal; echo " Jam terima : ".$jam_impC; echo "<br>";
+							// 	$inDT['rfid'] = $rfid_impC;
+							// 	$inDT['tanggal'] = $tanggal;
+							// 	$inDT['jam'] = $jam_impC;
+							// 	$this->db->insert("test_importcsv",$inDT);
+							// }else{
+							// 	echo "RFID : ".$rowData[0][1]; echo " Tanggal terima : ".$rowData[0][2]; echo " Jam terima : ".$rowData[0][3].":00"; echo "<br>";
+							// 	$inDT['rfid'] = $rfid_impC;
+							// 	$inDT['tanggal'] = $tanggal;
+							// 	$inDT['jam'] = $jam_impC;
+							// 	$this->db->insert("test_importcsv",$inDT);
+							// }
+							if($last_char==";"){
+								$rfid_impC=substr($data_impC,0,16);
+								$tanggal_impC = substr($data_impC,-20,-10);
+								$waktu = substr($data_impC,-9,-1);
+								$jam_impC=str_replace('.', ':', $waktu);
+								// $tanggal_impC=PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][1],  "YYYY-mm-dd");
+								// $jam_impC=PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][2],  "hh:mm");	
+								// $tanggal_impC=substr($data_impC,18,10);	
+								$qDt_before = $this->App_model->get_qDt_before1($id_awo_impC,$rfid_impC);
+								$no_pengiriman = $qDt_before->no_pengiriman;    
+								if($qDt_before->jml>0){
+									$qValidRFID = $this->App_model->get_qValidRFID1($no_pengiriman,$rfid_impC,$id_awo_impC);
+									if($qValidRFID->jml==0){
+										$inDT['id_pengiriman'] = $qDt_before->id_pengiriman;
+										$inDT['nota'] = $qDt_before->nota;
+										$inDT['eartag'] = $qDt_before->eartag;
+										$inDT['beast_id'] = $qDt_before->beast_id;
+										$inDT['shipment'] = $qDt_before->shipment;
+										$inDT['material_description'] = $qDt_before->material_description;
+										$inDT['rfid'] = $qDt_before->rfid;
+										$inDT['berat'] = $qDt_before->berat;
+										$inDT['customer'] = $qDt_before->customer;
+										$inDT['no_kendaraan'] = $qDt_before->no_kendaraan;
+										$inDT['tanggal_terimaDt'] =  $tanggal_impC;
+										$inDT['jam_terimaDt'] =  $jam_impC;
+										$this->db->insert("penerimaan_detail",$inDT);
+										$this->db->update("pengiriman_detail",array('status_terima' => '1'),array('id_pengiriman_detail' => $qDt_before->id_pengiriman_detail));
+										
+										$in['status_terima'] = '1';
+										$in['tanggal_terima'] = $tanggal_impC;
+										$in['jam_terima'] = $jam_impC;
+										// $in['keterangan_terima'] = $this->input->post("keterangan_terima");
+										$this->db->update("pengiriman",$in,array('id_pengiriman' => $qDt_before->id_pengiriman));
+										$count_id++;
+									}
+								}
+							}else{
+								// echo "RFID : ".$rowData[0][1]; echo " Tanggal terima : ".$rowData[0][2]; echo " Jam terima : ".$rowData[0][3].":00"; echo "<br>";
+								// $inDT['rfid'] = $rowData[0][1];
+								// $inDT['tanggal'] = $rowData[0][2];
+								// $inDT['jam'] = $rowData[0][3].":00";
+								// $this->db->insert("test_importcsv",$inDT);
+								// $tanggal_impC=PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][1],  "YYYY-mm-dd");
+								// $jam_impC=PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][2],  "hh:mm");	
+								$rfid_impC=$rowData[0][1];
+								$tanggal_impC=$rowData[0][2];
+								$jam_impC=$rowData[0][3].":00";
+								$qDt_before = $this->App_model->get_qDt_before1($id_awo_impC,$rfid_impC);
+								$no_pengiriman = $qDt_before->no_pengiriman; 
+								if($qDt_before->jml>0){
+									$qValidRFID = $this->App_model->get_qValidRFID1($no_pengiriman,$rfid_impC,$id_awo_impC);
+									if($qValidRFID->jml==0){
+										$inDT['id_pengiriman'] = $qDt_before->id_pengiriman;
+										$inDT['nota'] = $qDt_before->nota;
+										$inDT['eartag'] = $qDt_before->eartag;
+										$inDT['beast_id'] = $qDt_before->beast_id;
+										$inDT['shipment'] = $qDt_before->shipment;
+										$inDT['material_description'] = $qDt_before->material_description;
+										$inDT['rfid'] = $qDt_before->rfid;
+										$inDT['berat'] = $qDt_before->berat;
+										$inDT['customer'] = $qDt_before->customer;
+										$inDT['no_kendaraan'] = $qDt_before->no_kendaraan;
+										$inDT['tanggal_terimaDt'] =  $tanggal_impC;
+										$inDT['jam_terimaDt'] =  $jam_impC;
+										$this->db->insert("penerimaan_detail",$inDT);
+										$this->db->update("pengiriman_detail",array('status_terima' => '1'),array('id_pengiriman_detail' => $qDt_before->id_pengiriman_detail));
+										
+										$in['status_terima'] = '1';
+										$in['tanggal_terima'] = $tanggal_impC;
+										$in['jam_terima'] = $jam_impC;
+										// $in['keterangan_terima'] = $this->input->post("keterangan_terima");
+										$this->db->update("pengiriman",$in,array('id_pengiriman' => $qDt_before->id_pengiriman));
+										$count_id++;
+									}
 								}
 							}
 						}

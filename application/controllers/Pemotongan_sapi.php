@@ -332,7 +332,7 @@ class pemotongan_sapi extends CI_Controller {
 		// }
 		if($this->session->userdata('hak_akses') == "awo") {
 			$config['upload_path'] = './upload/';
-			$config['allowed_types']= 'xls|csv';
+			$config['allowed_types']= 'xls||csv';
 			$config['encrypt_name']	= TRUE;
 			$config['remove_spaces']	= TRUE;	
 			$config['max_size']     = '0';
@@ -346,27 +346,56 @@ class pemotongan_sapi extends CI_Controller {
 		            $sheet = $objPHPExcel->getSheet(0);
 		            $highestRow = $sheet->getHighestRow();
 					$highestColumn = $sheet->getHighestColumn(); 
+					$id_awo_impC = $this->session->userdata("id_awo");
 					$countX = 0;
 						for ($row = 2; $row <= $highestRow; $row++){ 
 							$rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
 															NULL,
 															TRUE,
 															FALSE);
-							$rfid=$rowData[0][0];
-							$id_rph = $this->session->userdata("id_awo");	
-							$qCount = $this->db->query("SELECT COUNT(id_penerimaan_detail) AS  jml, penerimaan_detail.id_pengiriman FROM penerimaan_detail JOIN pengiriman ON pengiriman.`id_pengiriman`=penerimaan_detail.`id_pengiriman` JOIN mst_rph_user ON mst_rph_user.id_rph=pengiriman.id_rph 
-														WHERE mst_rph_user.id_awo='$id_rph' AND rfid='$rfid'")->row();    
-							if($qCount->jml > 0){
-								$qvalStat = $this->db->query("SELECT count(*) as jml FROM penerimaan_detail WHERE status_potong='1' AND rfid='$rfid' AND id_pengiriman='$qCount->id_pengiriman'")->row();
-								if($qvalStat->jml==0){
-									$where['rfid'] = $rfid;
-									$where['id_pengiriman'] = $qCount->id_pengiriman;
-									$where['intransit'] = "0";
-									$in['status_potong'] = '1';
-									$in['tanggal_potong'] =  PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][1],  "YYYY-mm-dd");
-									$in['jam_potong'] = PHPExcel_Style_NumberFormat::toFormattedString($rowData[0][2],  "hh:mm");
-									$this->db->update("penerimaan_detail",$in,$where);
-									$countX++;
+							$data_impC=$rowData[0][0];
+							$last_char = substr($data_impC,-1); 
+
+							if($last_char==";"){
+								$rfid_impC=substr($data_impC,0,16);
+								$tanggal_impC = substr($data_impC,-20,-10);
+								$waktu = substr($data_impC,-9,-1);
+								$jam_impC=str_replace('.', ':', $waktu);
+	
+								$qCount = $this->db->query("SELECT COUNT(id_penerimaan_detail) AS  jml, penerimaan_detail.id_pengiriman FROM penerimaan_detail JOIN pengiriman ON pengiriman.`id_pengiriman`=penerimaan_detail.`id_pengiriman` JOIN mst_rph_user ON mst_rph_user.id_rph=pengiriman.id_rph 
+															WHERE mst_rph_user.id_awo='$id_awo_impC' AND rfid='$rfid_impC'")->row();    
+								if($qCount->jml > 0){
+									$qvalStat = $this->db->query("SELECT count(*) as jml FROM penerimaan_detail WHERE status_potong='1' AND rfid='$rfid' AND id_pengiriman='$qCount->id_pengiriman'")->row();
+									if($qvalStat->jml==0){
+										$where['rfid'] = $rfid_impC;
+										$where['id_pengiriman'] = $qCount->id_pengiriman;
+										$where['intransit'] = "0";
+										$in['status_potong'] = '1';
+										$in['tanggal_potong'] = $tanggal_impC;
+										$in['jam_potong'] = $jam_impC;
+										$this->db->update("penerimaan_detail",$in,$where);
+										$countX++;
+									}
+								}
+							}else{
+								$rfid_impC=$rowData[0][1];
+								$tanggal_impC=$rowData[0][2];
+								$jam_impC=$rowData[0][3].":00";
+
+								$qCount = $this->db->query("SELECT COUNT(id_penerimaan_detail) AS  jml, penerimaan_detail.id_pengiriman FROM penerimaan_detail JOIN pengiriman ON pengiriman.`id_pengiriman`=penerimaan_detail.`id_pengiriman` JOIN mst_rph_user ON mst_rph_user.id_rph=pengiriman.id_rph 
+															WHERE mst_rph_user.id_awo='$id_awo_impC' AND rfid='$rfid_impC'")->row();    
+								if($qCount->jml > 0){
+									$qvalStat = $this->db->query("SELECT count(*) as jml FROM penerimaan_detail WHERE status_potong='1' AND rfid='$rfid' AND id_pengiriman='$qCount->id_pengiriman'")->row();
+									if($qvalStat->jml==0){
+										$where['rfid'] = $rfid_impC;
+										$where['id_pengiriman'] = $qCount->id_pengiriman;
+										$where['intransit'] = "0";
+										$in['status_potong'] = '1';
+										$in['tanggal_potong'] = $tanggal_impC;
+										$in['jam_potong'] = $jam_impC;
+										$this->db->update("penerimaan_detail",$in,$where);
+										$countX++;
+									}
 								}
 							}
 						}

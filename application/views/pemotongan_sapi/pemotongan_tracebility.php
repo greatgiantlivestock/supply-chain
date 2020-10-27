@@ -103,7 +103,14 @@
 												} 
 											?>
 										</td>
-										<td><?php echo date('H:i', strtotime($data['jam_potong'])); ?></td>
+										<td><?php 
+											if(empty($data['jam_potong'])) {
+												echo '-';
+											}else{
+												echo date('H:i', strtotime($data['jam_potong']));
+											} 
+											?>
+										</td>
 									</tr>
 								<?php 	$no++; } ?>
 							</tbody>

@@ -59,8 +59,8 @@
 							<td><?php echo $data['keterangan']; ?></td>
 							<!-- <td><?php if($q->hitung_sapi <= 0){echo "0000-00-00";}else{echo $data['tanggal_terima'];} ?></td>
 							<td><?php if($q->hitung_sapi <= 0){echo "00:00";}else{echo date('H:i', strtotime($data['jam_terima']));} ?></td> -->
-							<td><?php echo $data['tanggal_terima']; ?></td>
-							<td><?php echo date('H:i', strtotime($data['jam_terima']));?></td>
+							<td><?php echo $data['tanggal_terimaDt']; ?></td>
+							<td><?php echo date('H:i', strtotime($data['jam_terimaDt']));?></td>
 							<td><?php echo str_pad($jam, 2, "0", STR_PAD_LEFT).':'.str_pad(floor( $menit / 60 ), 2, "0", STR_PAD_LEFT); ?></td>
 							<td style="text-align:center;">
 									<a style="border-radius:25px;" id="penerimaan_sapi1" class="btn btn-sm btn-primary" href="" data-id_pengiriman="<?php echo $data['id_pengiriman']; ?>" data-tanggal_terima="<?php echo $data['tanggal_terimaDt']; ?>" data-jam_terima="<?php echo $data['jam_terimaDt']; ?>" data-keterangan_terima="<?php echo $data['keterangan_terima']; ?>" data-toggle="modal"><span class="fa fa-list-alt"> </span> Detail</a>

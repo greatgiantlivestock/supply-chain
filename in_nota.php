@@ -9,7 +9,7 @@
                     $fh = fopen('../interface/From/'.$file,'r');
                     $linecount=0;
                     $linecount1=0;
-                    $cn = mysqli_connect("localhost","homt3248_ms","moha11mmad","homt3248_supplychain");
+                    $cn = mysqli_connect("localhost","u1076725_ms","moha11mmad","u1076725_supplychain");
                     while ($line = fgets($fh)) {
                         if(strlen($line)>275){
                             $beast_id = substr($line,0,12);
