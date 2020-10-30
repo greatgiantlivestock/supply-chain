@@ -114,7 +114,7 @@ class app_model extends CI_Model {
 		return $q;
 	}
 	public function get_awo() {
-		$q = $this->db->query("SELECT mst_awo.*, jml FROM (SELECT id_awo,count(id_user_rph) as jml FROM mst_rph_user GROUP BY id_awo) as data1 RIGHT JOIN mst_awo ON mst_awo.id_awo=data1.id_awo ORDER BY nama_awo ASC");
+		$q = $this->db->query("SELECT mst_awo.*, jml FROM (SELECT id_awo,count(id_user_rph) as jml FROM mst_rph_user GROUP BY id_awo) as data1 RIGHT JOIN mst_awo ON mst_awo.id_awo=data1.id_awo WHERE NOT (mst_awo.id_awo='99' or mst_awo.id_awo='105') ORDER BY nama_awo ASC");
 		return $q;
 	}
 	public function get_user() {
