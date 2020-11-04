@@ -249,7 +249,7 @@
 	            <div class="modal-footer">
 	            	<div class="row">
 	            		<div class="col-md-12 text-right">
-			        		<button style="border-radius:25px;" id="simpan_jual" class="btn btn-primary btn-sm"><i class="fa fa-check"> </i> Release</button>
+			        		<button style="border-radius:25px;" id="simpan_jual" class="btn btn-primary btn-sm"><i class="fa fa-check"> </i> Laporkan</button>
 			        	</div>
 					</div>
 			    </div>

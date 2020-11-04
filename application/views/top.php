@@ -170,6 +170,10 @@
 							<i class="menu-icon  fa fa-tags"></i>
 							<span class="menu-text"> Mutasi Sapi </span>
 						</a>
+						<a href="<?php echo base_url(); ?>Password">
+							<i class="menu-icon  fa fa-tags"></i>
+							<span class="menu-text"> Password </span>
+						</a>
 				<?php }else if ($this->session->userdata("input_type")=='2'){?>
 						<a href="<?php echo base_url();?>penerimaan_sapi">
 							<i class="fa fa-folder-open"></i>
@@ -179,21 +183,25 @@
 							<i class="fa fa-search"></i>
 							<span class="menu-text"> History Penerimaan </span>
 						</a>
-						<a href="<?php echo base_url();?>pemotongan_sapi/traceability">
+						<a href="<?php echo base_url();?>Pemotongan_sapi/traceability">
 							<i class="fa fa-signal"></i>
 							<span class="menu-text"> Update Status Potong</span>
 						</a>
-						<a href="<?php echo base_url();?>pemotongan_sapi/hasil_pemotongan">
+						<a href="<?php echo base_url();?>Pemotongan_sapi/hasil_pemotongan">
 							<i class="fa fa-edit"></i>
 							<span class="menu-text"> Hasil Pemotongan</span>
 						</a>
-						<a href="<?php echo base_url(); ?>powerload">
+						<a href="<?php echo base_url(); ?>Powerload">
 							<i class="fa fa-exchange"></i>
 							<span class="menu-text"> Transfer Powerload </span>
 						</a>
-						<a href="<?php echo base_url(); ?>powerload/kartu_stok_awo">
+						<a href="<?php echo base_url(); ?>Powerload/kartu_stok_awo">
 							<i class="fa fa-list"></i>
 							<span class="menu-text"> History Powerload </span>
+						</a>									
+						<a href="<?php echo base_url(); ?>Password">
+							<i class="fa fa-list"></i>
+							<span class="menu-text"> Password </span>
 						</a>									
 				<?php }?>
 			<?php }?>
