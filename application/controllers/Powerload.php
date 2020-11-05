@@ -64,6 +64,9 @@ class powerload extends CI_Controller {
 	public function save() {
 		if($this->session->userdata('hak_akses') == "awo") {
 			$tipe = $this->input->post("tipe");	
+			$a = $this->input->post('id_rph');
+			$b = $this->input->post('tanggal');
+			$c = $this->input->post('merah');
 			$where['id_powerload'] 	= $this->input->post('id_powerload');
 			$in['id_awo'] 			= $this->session->userdata("id_awo");
 			$in['id_rph'] 			= $this->input->post('id_rph');
@@ -75,7 +78,7 @@ class powerload extends CI_Controller {
 
 			if($tipe == 'add') {
 				$this->db->insert("powerload",$in);
-				$this->session->set_flashdata("success","Input Data Powerload Berhasil");
+				$this->session->set_flashdata("success","Input Data Powerload Berhasil".$a.$b.$c);
 				redirect("powerload");
 			} else if($tipe == 'edit') {
 				$this->db->update("powerload",$in,$where);
