@@ -36,8 +36,8 @@
 						<td>
 							RPH
 						</td>
-						<td>
-							<select style="width:100%;" name="id_rph" class="form-control" required>
+						<td colspan="2">
+							<select style="width:100%;" name="id_rph" class="select2" required>
 								<?php echo $combo_rph; ?>
 							</select>
 						</td>

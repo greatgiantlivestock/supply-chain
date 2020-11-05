@@ -200,10 +200,16 @@
 		      $('#tgl3').datetimepicker({
 		        format: 'YYYY-MM-DD'
 		      })
+		      $('#tgl32').datetimepicker({
+		        format: 'YYYY-MM-DD'
+		      })
 		      $('#tgl4').datetimepicker({
 		        format: 'YYYY-MM-DD'
 		      })
 		      $('#jam').datetimepicker({
+		        format: 'HH:mm'
+		      })		        
+		      $('#jam2').datetimepicker({
 		        format: 'HH:mm'
 		      })		        
 		    });

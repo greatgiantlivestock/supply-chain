@@ -41,11 +41,11 @@
  			<table >
  				<tr>
  					<td style="width: 120px;padding: 5px 0 15px 10px;">Tgl.Awal</td>
- 					<td><input style="width: 150px;" id="tgl" type="date" name="tanggal_awal" class="form-control" value="<?php echo $tanggal_awal; ?>" ></td>
+ 					<td><input style="width: 150px;" id="tgl" name="tanggal_awal" class="form-control" value="<?php echo $tanggal_awal; ?>" ></td>
  				</tr>
  				<tr>
  					<td style="width: 120px;padding: 5px 0 15px 10px;">Tgl.Akhir</td>
- 					<td><input style="width: 150px;" id="tgl2" type="date" name="tanggal_akhir" class="form-control" value="<?php echo $tanggal_akhir; ?>" ></td>
+ 					<td><input style="width: 150px;" id="tgl2" name="tanggal_akhir" class="form-control" value="<?php echo $tanggal_akhir; ?>" ></td>
  				</tr>
  				<tr>
 				 	<td style="width: 120px;padding: 5px 0 15px 10px;">Status</td>
@@ -269,11 +269,19 @@
             	<div class="modal-body">					
             		<div class="form-gorup">
             			<label>Tgl. Potong</label>
+						<!-- <table style="width:100%;">
+							<tr>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table> -->
             			<div class="row">
-            				<div class="col-xs-4">
-            					<input style="margin-bottom: 10px;" id="tgl3" class="form-control" name="tanggal_potong" placeholder="Tanggal Potong ..." required>
+            				<div class="col-xs-5">
+            					<input style="margin-bottom: 10px;" autocomplete="off" id="tgl3" class="form-control" name="tanggal_potong" placeholder="Tanggal Potong ..." required>
             				</div>
-            				<div class="col-xs-3">
+            				<div class="col-xs-5">
             					<input id="jam" class="form-control" style="margin-bottom: 20px;" type="text" name="jam_potong" placeholder="Jam Potong .." required>
             				</div>
 						</div>
@@ -367,11 +375,11 @@
             		<div class="form-gorup">
             			<label>Tgl. Potong</label>
             			<div class="row">
-            				<div class="col-xs-4">
-            					<input style="margin-bottom: 10px;" id="tgl32" class="form-control" name="tanggal_potong" placeholder="Tanggal Potong ..." required>
+            				<div class="col-xs-5">
+            					<input style="margin-bottom: 10px;" id="tgl32" autocomplete="off" class="form-control" name="tanggal_potong" placeholder="Tanggal Potong ..." required>
             				</div>
-            				<div class="col-xs-3">
-            					<input id="jam2" class="form-control" style="margin-bottom: 20px;" type="text" name="jam_potong" placeholder="Jam Potong .." required>
+            				<div class="col-xs-5">
+            					<input id="jam2" class="form-control" autocomplete="off" style="margin-bottom: 20px;" type="text" name="jam_potong" placeholder="Jam Potong .." required>
             				</div>
 						</div>
             		</div>
@@ -379,7 +387,7 @@
             			<label>RFID</label>
             			<div class="row">
             				<div class="col-xs-6">
-            					<input id="rfid2"  class="form-control" name="rfid" required>
+            					<input id="rfid2" autocomplete="off" class="form-control" name="rfid" required>
             				</div>
             				<div class="col-xs-6">
             					<input type="checkbox" value="1" name="flag" /> <span class="lbl">RFID Tidak Sesuai</span>
@@ -391,36 +399,36 @@
             		</div>
 					<div class="form-gorup">
 						<label>Berat Prosot</label>
-						<input id="berat_prosot2" style="width:10%;margin-bottom: 10px;" class="form-control" name="berat_prosot">
+						<input id="berat_prosot2" autocomplete="off" style="width:25%;margin-bottom: 10px;" class="form-control" name="berat_prosot">
 					</div>
             		<div class="form-gorup">
             			<label>Power Load</label>
             			<div class="row">
-	            			<div class="col-xs-2">
-	            				<input id="merah2" style="margin-bottom: 10px;" class="form-control" name="merah" placeholder="merah" >
+	            			<div class="col-xs-3">
+	            				<input id="merah2" autocomplete="off" style="margin-bottom: 10px;width:115%;" class="form-control" name="merah" placeholder="merah" >
 	            			</div>
-	            			<div class="col-xs-2">
-	            				<input id="orange2"  style="margin-bottom: 10px;" class="form-control" name="orange" placeholder="orange" >
+	            			<div class="col-xs-3">
+	            				<input id="orange2" autocomplete="off" style="margin-bottom: 10px;width:115%;" class="form-control" name="orange" placeholder="orange" >
 	            			</div>
-	            			<div class="col-xs-2">
-	            				<input id="hitam2"  style="margin-bottom: 10px;" class="form-control" name="hitam" placeholder="hitam" >
+	            			<div class="col-xs-3">
+	            				<input id="hitam2" autocomplete="off" style="margin-bottom: 10px;width:115%;" class="form-control" name="hitam" placeholder="hitam" >
 	            			</div>
-	            			<div class="col-xs-2">
-	            				<input id="kuning2"  style="margin-bottom: 10px;" class="form-control" name="kuning" placeholder="kuning" >
+	            			<div class="col-xs-3">
+	            				<input id="kuning2" autocomplete="off" style="margin-bottom: 10px;width:115%;" class="form-control" name="kuning" placeholder="kuning" >
 	            			</div>
 	            		</div>
             		</div>
             		<div class="row">
-            			<div class="col-xs-2">
+            			<div class="col-xs-4">
 		            		<div class="form-gorup">
 		            			<label>Peneumatic</label>
-		            			<input id="peneumatic2" style="margin-bottom: 10px;" class="form-control" name="peneumatic" required>
+		            			<input id="peneumatic2" autocomplete="off" style="margin-bottom: 10px;width:100%;" class="form-control" name="peneumatic" required>
 		            		</div>
 		            	</div>
-		            	<div class="col-xs-2">
+		            	<div class="col-xs-4">
 		            		<div class="form-gorup">
 		            			<label>Score</label>
-		            			<input id="score2" style="margin-bottom: 10px;" class="form-control" name="score" required>
+		            			<input id="score2" autocomplete="off" style="margin-bottom: 10px;width:100%;" class="form-control" name="score" required>
 		            		</div>
 		            	</div>
 		            </div>
@@ -428,19 +436,19 @@
             			<div class="col-xs-6">
 		            		<div class="form-gorup">
 		            			<label>Pasar</label>
-		            			<input id="pasar2" style="margin-bottom: 10px;" class="form-control" name="pasar">
+		            			<input id="pasar2" autocomplete="off" style="margin-bottom: 10px;" class="form-control" name="pasar">
 		            		</div>
 		            	</div>
 		            	<div class="col-xs-6">
 		            		<div class="form-gorup">
 		            			<label>Nama Pedagang</label>
-		            			<input id="nama_pedagang2" style="margin-bottom: 10px;" class="form-control" name="nama_pedagang">
+		            			<input id="nama_pedagang2" autocomplete="off" style="margin-bottom: 10px;" class="form-control" name="nama_pedagang">
 		            		</div>
 		            	</div>
 		            </div>
             		<div class="form-group">
             			<label>Keterangan</label>
-            			<input id="keterangan_potong2" style="width:50%;" class="form-control" name="keterangan_potong">
+            			<input id="keterangan_potong2" autocomplete="off" style="width:50%;" class="form-control" name="keterangan_potong">
             		</div>
 				</div>
 	            <div class="modal-footer">

@@ -697,14 +697,27 @@ class app_model extends CI_Model {
 	}
 	public function get_combo_rph_awo($id="") {
 		$hasil = "";
+		$hak_akses = $this->session->userdata("hak_akses");
 		$id_rph = $this->session->userdata("id_awo");
-		$q = $this->db->query("SELECT mst_rph.* FROM mst_rph JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph.id_rph WHERE id_awo='$id_rph'");
-		$hasil .= '<option value>Pilih RPH</option>';
-		foreach($q->result() as $h) {
-			if($id == $h->id_rph) {
-				$hasil .= '<option value="'.$h->id_rph.'" selected="selected">'.$h->nama_rph.'</option>';
-			} else {
-				$hasil .= '<option value="'.$h->id_rph.'">'.$h->nama_rph.'</option>';
+		if($hak_akses=='admin'){
+			$q = $this->db->query("SELECT mst_rph.* FROM mst_rph");
+			$hasil .= '<option value>Pilih RPH</option>';
+			foreach($q->result() as $h) {
+				if($id == $h->id_rph) {
+					$hasil .= '<option value="'.$h->id_rph.'" selected="selected">'.$h->nama_rph.'</option>';
+				} else {
+					$hasil .= '<option value="'.$h->id_rph.'">'.$h->nama_rph.'</option>';
+				}
+			}
+		}else{
+			$q = $this->db->query("SELECT mst_rph.* FROM mst_rph JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph.id_rph WHERE id_awo='$id_rph'");
+			$hasil .= '<option value>Pilih RPH</option>';
+			foreach($q->result() as $h) {
+				if($id == $h->id_rph) {
+					$hasil .= '<option value="'.$h->id_rph.'" selected="selected">'.$h->nama_rph.'</option>';
+				} else {
+					$hasil .= '<option value="'.$h->id_rph.'">'.$h->nama_rph.'</option>';
+				}
 			}
 		}
 		return $hasil;
