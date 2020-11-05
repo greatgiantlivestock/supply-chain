@@ -75,9 +75,11 @@ class powerload extends CI_Controller {
 
 			if($tipe == 'add') {
 				$this->db->insert("powerload",$in);
+				$this->session->set_flashdata("success","Input Data Powerload Berhasil");
 				redirect("powerload");
 			} else if($tipe == 'edit') {
 				$this->db->update("powerload",$in,$where);
+				$this->session->set_flashdata("error","Edit Data Poerload Berhasil");
 				redirect("powerload");
 			} else {
 				redirect("login");
