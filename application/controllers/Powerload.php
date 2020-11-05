@@ -63,6 +63,7 @@ class powerload extends CI_Controller {
 
 	public function save() {
 		if($this->session->userdata('hak_akses') == "awo") {
+			$tipe = $this->input->post('tipe');
 			$where['id_powerload'] 	= $this->input->post('id_powerload');
 			$in['id_awo'] 			= $this->session->userdata("id_awo");
 			$in['id_rph'] 			= $this->input->post('id_rph');
@@ -81,7 +82,7 @@ class powerload extends CI_Controller {
 				$this->session->set_flashdata("success","Edit Data Poerload Berhasil");
 				redirect("powerload");
 			} else {
-				redirect("login");
+				redirect("powerload");
 			}
 		} else {
 			redirect("login");
