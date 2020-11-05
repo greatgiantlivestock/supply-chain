@@ -477,7 +477,8 @@ class app_model extends CI_Model {
 		return $q;
 	}
 	public function get_powerload($id) {
-		$q = $this->db->query("SELECT * FROM powerload INNER JOIN mst_rph ON powerload.id_rph = mst_rph.id_rph JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph.id_rph WHERE mst_rph_user.id_awo = '$id' ORDER BY tanggal DESC");
+		$q = $this->db->query("SELECT * FROM powerload INNER JOIN mst_rph_user ON mst_rph_user.id_rph=powerload.id_rph 
+						JOIN mst_rph ON mst_rph.id_rph=mst_rph_user.id_rph WHERE mst_rph_user.id_awo = '$id' ORDER BY tanggal DESC");
 		return $q;
 	}
 	public function get_perawatan_asset() {
@@ -592,7 +593,7 @@ class app_model extends CI_Model {
 	public function get_combo_rph_filter($id="") {
 		$hasil = "";
 		$q = $this->db->query("SELECT mst_rph.* FROM mst_rph JOIN mst_rph_child ON mst_rph.id_rph=mst_rph_child.id_rph_mutasi 
-						JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph_child.id_rph WHERE id_awo='109' ORDER BY nama_rph ASC");
+						JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph_child.id_rph WHERE id_awo='$id' ORDER BY nama_rph ASC");
 		$hasil .= '<option value>Pilih RPH</option>';
 		foreach($q->result() as $h) {
 			if($id == $h->id_rph) {
@@ -697,7 +698,7 @@ class app_model extends CI_Model {
 	public function get_combo_rph_awo($id="") {
 		$hasil = "";
 		$id_rph = $this->session->userdata("id_awo");
-		$q = $this->db->query("SELECT * FROM mst_rph JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph.id_rph WHERE id_awo='$id_rph'");
+		$q = $this->db->query("SELECT mst_rph.* FROM mst_rph JOIN mst_rph_user ON mst_rph_user.id_rph=mst_rph.id_rph WHERE id_awo='$id_rph'");
 		$hasil .= '<option value>Pilih RPH</option>';
 		foreach($q->result() as $h) {
 			if($id == $h->id_rph) {

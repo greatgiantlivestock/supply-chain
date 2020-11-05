@@ -12,7 +12,7 @@ class Mutasi_sapi extends CI_Controller {
 			$d['pengiriman_detail'] = "";
 			$d['disable'] = "";
 			$d['color'] = "";
-			$d['combo_rph'] = $this->App_model->get_combo_rph_filter();	
+			$d['combo_rph'] = $this->App_model->get_combo_rph_filter($id);	
 			//$d['combo_pengiriman'] = $this->App_model->get_combo_pengiriman();	
 			$d['combo_stock'] = $this->App_model->get_combo_pengiriman_rph_mutasi();
 			$d['combo_asal_sapi'] = $this->App_model->get_combo_asal_sapi();

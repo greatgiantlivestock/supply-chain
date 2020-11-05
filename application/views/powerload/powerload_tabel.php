@@ -15,7 +15,17 @@
 						<div class="col-md-6">
 							<div style="margin-bottom:10px;" class="form-gorup">
 								<label>Tanggal</label>
-								<input style="<?php echo $color; ?>" id="tgl" class="form-control" type="text" placeholder="tanggal kirim" name="tanggal" required value="<?php echo $tanggal; ?>">
+								<input style="<?php echo $color; ?>;width:30%;" id="tgl" class="form-control" type="text" placeholder="tanggal kirim" name="tanggal" required value="<?php echo $tanggal; ?>">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-gorup">
+								<label>RPH</label>
+							</div>
+							<div style="margin-bottom:10px;" class="form-gorup">
+								<select style="width:20%;" class="select2" name="id_rph">
+									<?php echo $combo_rph;?>
+								</select>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -42,8 +52,8 @@
 					<hr/ style="margin-top: 15px; margin-bottom: 10px;">
 					<div class="row">
 						<div class="col-md-6">
-							<button  style="border-radius:25px;" class="btn btn-primary btn-sm"><i class="fa fa-refresh"> </i> <?php echo $name_button; ?></button>
-							<a style="border-radius:25px;" style="margin-left:40px;" class="btn btn-danger btn-sm" href="<?php echo base_url().'powerload'; ?>" <?php echo $disabled; ?>><i class="fa fa-trash"> </i> Batal</a>
+							<button  style="border-radius:25px;" class="btn btn-primary btn-sm"><i class="fa fa-plus"> </i> <?php echo $name_button; ?></button>
+							<a style="border-radius:25px;" style="margin-left:40px;" class="btn btn-danger btn-sm" href="<?php echo base_url().'powerload'; ?>" <?php echo $disabled; ?>><i class="fa fa-close"> </i> Batal</a>
 						</div>
 					</div>
 					<hr/ style="margin-top: 10px; margin-bottom: 30px;">

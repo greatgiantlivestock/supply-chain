@@ -171,7 +171,7 @@
 							<span class="menu-text"> Mutasi Sapi </span>
 						</a>
 						<a href="<?php echo base_url(); ?>Password">
-							<i class="menu-icon  fa fa-tags"></i>
+							<i class="menu-icon  fa fa-cog"></i>
 							<span class="menu-text"> Password </span>
 						</a>
 				<?php }else if ($this->session->userdata("input_type")=='2'){?>
@@ -200,7 +200,7 @@
 							<span class="menu-text"> History Powerload </span>
 						</a>									
 						<a href="<?php echo base_url(); ?>Password">
-							<i class="fa fa-list"></i>
+							<i class="fa fa-cog"></i>
 							<span class="menu-text"> Password </span>
 						</a>									
 				<?php }?>

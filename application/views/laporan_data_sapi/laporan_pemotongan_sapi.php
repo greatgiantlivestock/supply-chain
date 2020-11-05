@@ -8,7 +8,7 @@
 
 	<div style="margin-bottom:20px;margin-top:40px;" class="row">
 		<form action="<?php echo base_url(); ?>laporan_data_sapi/lihat_pemotongan_sapi" method="post"/>
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 				<table class="tbl_input">
 					<tr>
 						<td style="width: 100px;">
@@ -37,7 +37,7 @@
 							RPH
 						</td>
 						<td>
-							<select style="width:100%;" name="id_rph" class="form-control">
+							<select style="width:100%;" name="id_rph" class="select2">
 								<?php echo $combo_rph; ?>
 							</select>
 						</td>

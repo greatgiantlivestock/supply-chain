@@ -10,7 +10,7 @@
 			<div class="widget-main">
 				<div class="row" style="margin-bottom: 20px;">
 
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<form action="<?php echo base_url(); ?>laporan_data_sapi/lihat_traceability" method="post" enctype="multipart/form-data">
 							<table class="tbl_input">
 					<tr>
@@ -40,7 +40,7 @@
 							RPH
 						</td>
 						<td>
-							<select style="width:100%;" name="id_rph" class="form-control">
+							<select class="select2" style="width:100%;" name="id_rph" >
 								<?php echo $combo_rph; ?>
 							</select>
 						</td>

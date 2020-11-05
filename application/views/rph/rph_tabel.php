@@ -116,7 +116,7 @@
 									<label>:</label>
 								</td>
 								<td>
-									<select name="id_rph_mutasi">
+									<select style="width:60%;" name="id_rph_mutasi" class="select2">
 											<?php echo $combo_rph_mutasi; ?>
 									</select>
 								</td>

@@ -5,8 +5,8 @@ class powerload extends CI_Controller {
 
 	public function index() {
 		if($this->session->userdata('hak_akses') == "awo") {
-			$id_rph = $this->session->userdata("id_awo");
-			$d['powerload'] = $this->App_model->get_powerload($id_rph);
+			$id_awo = $this->session->userdata("id_awo");
+			$d['powerload'] = $this->App_model->get_powerload($id_awo);
 			$d['judul'] = 'Data Powerload';
 			$d['color'] = '';	
 			$d['id_transfer'] = '';
@@ -14,7 +14,7 @@ class powerload extends CI_Controller {
 			$d['disabled'] = 'disabled';	
 			$d['tipe'] = 'add';
 			$d['id_powerload'] = 'add';
-			$d['combo_rph'] = $this->App_model->get_combo_rph();
+			$d['combo_rph'] = $this->App_model->get_combo_rph_awo();
 			$d['id_powerload'] = "";
 			$d['id_rph'] = "";
 			$d['merah'] = "";
@@ -44,7 +44,7 @@ class powerload extends CI_Controller {
 			$d['name_button'] = 'Edit';
 			$d['disabled'] = '';
 			$d['id_powerload'] = $get_id->id_powerload;
-			$d['combo_rph'] = $this->App_model->get_combo_rph($get_id->id_rph);
+			$d['combo_rph'] = $this->App_model->get_combo_rph_awo($get_id->id_rph);
 			$d['tanggal'] = $get_id->tanggal;
 			$d['merah'] = $get_id->merah;
 			$d['orange'] = $get_id->orange;
@@ -63,16 +63,15 @@ class powerload extends CI_Controller {
 
 	public function save() {
 		if($this->session->userdata('hak_akses') == "awo") {
-			
 			$tipe = $this->input->post("tipe");	
 			$where['id_powerload'] 	= $this->input->post('id_powerload');
-			$in['id_rph'] 			= $this->session->userdata("id_rph");
+			$in['id_awo'] 			= $this->session->userdata("id_awo");
+			$in['id_rph'] 			= $this->input->post('id_rph');
 			$in['tanggal'] 		= $this->input->post('tanggal');
 			$in['merah'] = $this->input->post('merah');
 			$in['orange'] 	= $this->input->post('orange');
 			$in['hitam'] 	= $this->input->post('hitam');
 			$in['kuning'] 	= $this->input->post('kuning');
-
 
 			if($tipe == 'add') {
 				$this->db->insert("powerload",$in);
@@ -105,7 +104,7 @@ class powerload extends CI_Controller {
 			$d['kartu_stok'] = '';		
 			$d['tanggal1'] = '';
 			$d['tanggal2'] = '';
-			$d['combo_rph'] = $this->App_model->get_combo_rph();
+			$d['combo_rph'] = $this->App_model->get_combo_rph_awo();
 			$d['id_rph'] = '';
 			$this->load->view('top',$d);
 			$this->load->view('menu');
@@ -123,7 +122,7 @@ class powerload extends CI_Controller {
 			$d['kartu_stok'] = '';		
 			$d['tanggal1'] = $this->input->post("tanggal1");
 			$d['tanggal2'] = $this->input->post("tanggal2");
-			$d['combo_rph'] = $this->App_model->get_combo_rph($this->input->post("id_rph"));
+			$d['combo_rph'] = $this->App_model->get_combo_rph_awo($this->input->post("id_rph"));
 			$d['id_rph'] = $this->input->post("id_rph");
 			$this->load->view('top',$d);
 			$this->load->view('menu');

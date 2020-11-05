@@ -101,7 +101,7 @@
 									<label>RPH</label>
 								</td>
 								<td>
-									<select name="id_rph">
+									<select style="width:70%;" class="select2" name="id_rph">
 											<?php echo $combo_rph; ?>
 									</select>
 								</td>

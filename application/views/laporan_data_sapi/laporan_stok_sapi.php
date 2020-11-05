@@ -8,7 +8,7 @@
 
 	<div style="margin-bottom:20px;margin-top:40px;" class="row">
 		<form class="form-horizontal" action="<?php echo base_url(); ?>laporan_data_sapi/lihat_stok_sapi" method="post"/>
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 				<table class="tbl_input">
 					<tr>
 						<td style="width: 100px;">
@@ -37,7 +37,7 @@
 							RPH
 						</td>
 						<td>
-							<select style="width:100%;" name="id_rph" class="form-control">
+							<select class="select2" style="width:100%;" name="id_rph" >
 								<?php echo $combo_rph; ?>
 							</select>
 						</td>
@@ -60,7 +60,7 @@
 							Customer
 						</td>
 						<td>
-							<select style="width:100%;" name="customer" class="form-control">
+							<select class="select2" style="width:100%;" name="customer" >
 								<?php echo $combo_customer; ?>
 							</select>
 						</td>

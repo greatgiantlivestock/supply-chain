@@ -32,14 +32,14 @@
 						<input style="width:60%;" class="form-control" type="text" name="alamat" value="<?php echo $alamat; ?>"/>
 					</div>
 					<div class="form-group">
-						<label>RPH</label>
-						<select style="width:60%;" class="form-control" name="id_rph">
+						<label style="width:100%;">RPH</label>
+						<select style="width:25%;" class="select2" class="form-control" name="id_rph">
 								<?php echo $combo_rph; ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Jenis Input</label>
-						<select style="width:60%;" class="form-control" name="input_type">
+						<select style="width:25%;" class="form-control" name="input_type">
 								<option value='0' <?php if($input_type==0){echo "selected";}?>>Tidak Ada Akses Input</option>
 								<option value='1' <?php if($input_type==1){echo "selected";}?>>Hanya Estimasi Potong</option>
 								<option value='2' <?php if($input_type==2){echo "selected";}?>>Estimasi dan Hasil Potong</option>
