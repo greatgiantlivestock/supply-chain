@@ -8,7 +8,7 @@
 		</div>
 		<div class="widget-body">
 			<div class="widget-main">
-				<form action="<?php echo base_url(); ?>powerload/save" method="post">
+				<form action="<?php echo base_url(); ?>Powerload/save" method="post">
 					<input type="hidden" name="tipe" value="<?php echo $tipe; ?>">
 					<input type="hidden" name="id_powerload" value="<?php echo $id_powerload; ?>">
 					<div class="row">
