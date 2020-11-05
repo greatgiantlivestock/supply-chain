@@ -23,7 +23,7 @@
 								<label>RPH</label>
 							</div>
 							<div style="margin-bottom:10px;" class="form-gorup">
-								<select style="width:20%;" class="select2" name="id_rph">
+								<select style="width:20%;" required class="select2" name="id_rph">
 									<?php echo $combo_rph;?>
 								</select>
 							</div>
