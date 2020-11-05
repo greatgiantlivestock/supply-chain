@@ -442,8 +442,16 @@ class pemotongan_sapi extends CI_Controller {
 			}else{
 				$in['kuning'] = $this->input->post("kuning");
 			}
-			$in['peneumatic'] = $this->input->post("peneumatic");
-			$in['score_stune'] = $this->input->post("score");
+			if($this->input->post("peneumatic")==''){
+				$in['peneumatic'] = 0;
+			else{
+				$in['peneumatic'] = $this->input->post("peneumatic");
+			}
+			if($this->input->post("score")=''){
+				$in['score_stune'] = 0;
+			else{
+				$in['score_stune'] = $this->input->post("score");
+			}
 			$in['keterangan_potong'] = $this->input->post("keterangan_potong");
 			$in['pasar'] = $this->input->post("pasar");
 			$in['nama_pedagang'] = $this->input->post("nama_pedagang");
@@ -473,12 +481,42 @@ class pemotongan_sapi extends CI_Controller {
 			$in['rfid'] = $this->input->post("rfid");
 			$in['berat_karkas'] = $this->input->post("berat_karkas");
 			$in['berat_prosot'] = $this->input->post("berat_prosot");
-			$in['merah'] = $this->input->post("merah");
-			$in['orange'] = $this->input->post("orange");
-			$in['hitam'] = $this->input->post("hitam");
-			$in['kuning'] = $this->input->post("kuning");
-			$in['peneumatic'] = $this->input->post("peneumatic");
-			$in['score_stune'] = $this->input->post("score");
+			// $in['merah'] = $this->input->post("merah");
+			// $in['orange'] = $this->input->post("orange");
+			// $in['hitam'] = $this->input->post("hitam");
+			// $in['kuning'] = $this->input->post("kuning");
+			// $in['peneumatic'] = $this->input->post("peneumatic");
+			// $in['score_stune'] = $this->input->post("score");
+			if($this->input->post("merah")==""){
+				$in['merah'] = "0";
+			}else{
+				$in['merah'] = $this->input->post("merah");
+			}
+			if($this->input->post("orange")==""){
+				$in['orange'] = "0";
+			}else{
+				$in['orange'] = $this->input->post("orange");
+			}
+			if($this->input->post("hitam")==""){
+				$in['hitam'] = "0";
+			}else{
+				$in['hitam'] = $this->input->post("hitam");
+			}
+			if($this->input->post("kuning")==""){
+				$in['kuning'] = "0";
+			}else{
+				$in['kuning'] = $this->input->post("kuning");
+			}
+			if($this->input->post("peneumatic")==''){
+				$in['peneumatic'] = 0;
+			else{
+				$in['peneumatic'] = $this->input->post("peneumatic");
+			}
+			if($this->input->post("score")=''){
+				$in['score_stune'] = 0;
+			else{
+				$in['score_stune'] = $this->input->post("score");
+			}
 			$in['keterangan_potong'] = $this->input->post("keterangan_potong");
 			$in['pasar'] = $this->input->post("pasar");
 			$in['nama_pedagang'] = $this->input->post("nama_pedagang");

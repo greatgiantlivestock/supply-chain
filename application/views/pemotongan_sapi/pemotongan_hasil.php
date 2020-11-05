@@ -325,13 +325,13 @@
             			<div class="col-xs-2">
 		            		<div class="form-gorup">
 		            			<label>Peneumatic</label>
-		            			<input id="peneumatic" style="margin-bottom: 10px;" class="form-control" name="peneumatic" required>
+		            			<input id="peneumatic" style="margin-bottom: 10px;" class="form-control" name="peneumatic" >
 		            		</div>
 		            	</div>
 		            	<div class="col-xs-2">
 		            		<div class="form-gorup">
 		            			<label>Score</label>
-		            			<input id="score" style="margin-bottom: 10px;" class="form-control" name="score" required>
+		            			<input id="score" style="margin-bottom: 10px;" class="form-control" name="score" >
 		            		</div>
 		            	</div>
 		            </div>
