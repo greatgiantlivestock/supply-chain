@@ -444,12 +444,12 @@ class pemotongan_sapi extends CI_Controller {
 			}
 			if($this->input->post("peneumatic")==''){
 				$in['peneumatic'] = 0;
-			else{
+			}else{
 				$in['peneumatic'] = $this->input->post("peneumatic");
 			}
-			if($this->input->post("score")=''){
+			if($this->input->post("score")==''){
 				$in['score_stune'] = 0;
-			else{
+			}else{
 				$in['score_stune'] = $this->input->post("score");
 			}
 			$in['keterangan_potong'] = $this->input->post("keterangan_potong");
@@ -509,12 +509,12 @@ class pemotongan_sapi extends CI_Controller {
 			}
 			if($this->input->post("peneumatic")==''){
 				$in['peneumatic'] = 0;
-			else{
+			}else{
 				$in['peneumatic'] = $this->input->post("peneumatic");
 			}
-			if($this->input->post("score")=''){
+			if($this->input->post("score")==''){
 				$in['score_stune'] = 0;
-			else{
+			}else{
 				$in['score_stune'] = $this->input->post("score");
 			}
 			$in['keterangan_potong'] = $this->input->post("keterangan_potong");
