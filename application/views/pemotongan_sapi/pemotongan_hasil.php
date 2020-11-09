@@ -36,7 +36,20 @@
                     </div> 
  <?php } ?>
  <div class="row">
- 	<div class="col-md-6">
+ 	<div class="col-md-11" style="margin-bottom:15px;">
+			<form action="<?php echo base_url(); ?>pemotongan_sapi/upload_potong" method="post" enctype="multipart/form-data">
+				<table style="border: 1px solid #ccc;">
+					<tr>
+						<td colspan="2" style="width: 120px;padding: 15px 0 15px 10px;">Upload CSV</td>
+					</tr>
+					<tr>
+						<td style="width: 120px;padding: 15px 0 15px 10px;"><input style="width: 180px;" type="file" name="file_upload" required></td>
+						<td><button style="border-radius:25px;margin-right:7px;" class="btn btn-danger btn-sm"><i class="fa fa-upload"> </i> Upload CSV</button>
+					</tr>
+				</table>	
+			</form> 
+	</div>
+ 	<div class="col-md-12">
  		<form action="<?php echo base_url(); ?>pemotongan_sapi/lihat_hasil_pemotongan" method="post">
  			<table >
  				<tr>
@@ -73,11 +86,11 @@
 	  				<!-- <div id="GGL" class="tab-pane fade in active"> -->
 	  				<div id="GGL">
 					  		<?php if($pemotongan_sapi_ggl_stts->result_array()==null){?>
-								<a style="border-radius:25px;" id="laporkan_admin" disabled class="btn btn-sm btn-primary" href=""  style="margin-bottom:10px"
-								data-toggle="modal"><span class="fa fa-send"> </span> Laporkan</a>
+								<a style="border-radius:25px;margin-bottom:10px;display: block;margin-left: auto;margin-right: auto; " id="laporkan_admin" disabled class="btn btn-sm btn-success" href=""  style="margin-bottom:10px"
+								data-toggle="modal"><span class="fa fa-send"> </span> Laporkan hasil sapi potong ke Admin</a>
 							<?php }else if(!$pemotongan_sapi_ggl_stts->result_array()==null){?>
-								<a style="border-radius:25px;" id="laporkan_admin" class="btn btn-sm btn-primary" href="" 
-								data-toggle="modal"><span class="fa fa-send"> </span> Laporkan</a>
+								<a style="border-radius:25px;margin-bottom:10px;display: block;margin-left: auto;margin-right: auto; " id="laporkan_admin" class="btn btn-sm btn-success" href="" 
+								data-toggle="modal"><span class="fa fa-send"> </span> Laporkan hasil sapi potong ke Admin</a>
 							<?php }?>
 	  					<!-- <div style="overflow-y: scroll;margin-bottom: 20px;"> -->
 							<table style="font-size:11px;" id="dttble5" class="table table-striped table-bordered table-hover">

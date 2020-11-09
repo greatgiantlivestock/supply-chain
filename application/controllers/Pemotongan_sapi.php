@@ -223,7 +223,7 @@ class pemotongan_sapi extends CI_Controller {
 		$no = 1;	
 		$get = $this->db->query("SELECT * FROM pengiriman JOIN penerimaan_detail ON pengiriman.id_pengiriman=penerimaan_detail.id_pengiriman 
 								JOIN mst_rph_user ON mst_rph_user.id_rph=pengiriman.id_rph
-								WHERE mst_rph_user.id_awo='$id_rph' AND status_potong='1'");
+								WHERE mst_rph_user.id_awo='$id_rph' AND status_potong='1' AND berat_karkas IS NOT NULL OR mst_rph_user.id_awo='$id_rph' AND status_potong='1' AND berat_prosot IS NOT NULL");
 		echo '<table id="dataTables-example" class="table table-bordered">
 					<thead>
 						<tr>
@@ -405,10 +405,12 @@ class pemotongan_sapi extends CI_Controller {
 							$this->session->set_flashdata("success", $countX." Ekor sapi berhasil diupdate status potongnya");
 						}
 						@unlink("./upload/".$data['file_name']);
-						redirect("pemotongan_sapi/traceability");	
+						// redirect("pemotongan_sapi/traceability");	
+						redirect("pemotongan_sapi/hasil_pemotongan");	
 				} else {
 					$this->session->set_flashdata("error",$this->upload->display_errors());
-					redirect("pemotongan_sapi/traceability");
+					// redirect("pemotongan_sapi/traceability");
+					redirect("pemotongan_sapi/hasil_pemotongan");
 				}			
 		}else {
 			redirect("login");
