@@ -68,12 +68,12 @@
 											History Penerimaan
 										</a>
 									</li>
-									<li>
+									<!-- <li>
 										<a href="<?php echo base_url(); ?>Pemotongan_sapi/traceability">
 											<i class="fa fa-double-angle-right"></i>
 											Update Status Potong
 										</a>
-									</li>
+									</li> -->
 									</li>
 									<li>
 										<a href="<?php echo base_url(); ?>Pemotongan_sapi/hasil_pemotongan">

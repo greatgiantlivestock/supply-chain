@@ -183,10 +183,10 @@
 							<i class="fa fa-search"></i>
 							<span class="menu-text"> History Penerimaan </span>
 						</a>
-						<a href="<?php echo base_url();?>Pemotongan_sapi/traceability">
+						<!-- <a href="<?php echo base_url();?>Pemotongan_sapi/traceability">
 							<i class="fa fa-signal"></i>
 							<span class="menu-text"> Update Status Potong</span>
-						</a>
+						</a> -->
 						<a href="<?php echo base_url();?>Pemotongan_sapi/hasil_pemotongan">
 							<i class="fa fa-edit"></i>
 							<span class="menu-text"> Hasil Pemotongan</span>
