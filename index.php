@@ -53,6 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+	//Switch to Develop
 	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 	//Switch to Production
 	if ($_SERVER['SERVER_NAME'] == 'local_server_name') {
@@ -69,6 +70,7 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
+//Switch to develop
 // switch (ENVIRONMENT)
 // {
 // 	case 'development':

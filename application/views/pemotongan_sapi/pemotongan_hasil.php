@@ -186,7 +186,7 @@
 										<td><?php echo $data['eartag']; ?></td>
 										<td><?php echo $data['rfid']; ?></td>
 										<td><?php echo $data['nota']; ?></td>
-										<td><?php echo $data['shipment']; ?></td>
+										<td><?php if($this->session->userdata('username')!="nofita.septiana"){echo $data['shipment'];} ?></td>
 										<td><?php echo $data['material_description']; ?></td>
 										<td><?php echo $data['tanggal_terima']; ?></td>	
 										<td><?php 
