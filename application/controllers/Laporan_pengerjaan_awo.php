@@ -63,7 +63,7 @@ class laporan_pengerjaan_awo extends CI_Controller {
 					}else{
 						$data6c = '000000000000000'.number_format((float)$get->berat_prosot, 2, '', '');
 					}
-					$content = $data1.$data2.substr($data7a,0,35).$data3.$data4.substr($data5c,-8).substr($data6c,-8).$data8.$data9."\n";
+					$content = $data1.$data2.substr($data7a,0,35).$data3.$data4.substr($data5c,-8).substr($data6c,-8).$data8.$data9."00"."\n";
 					if($data1 != ''){
 						fwrite($fp,$content);
 						fclose($fp);
