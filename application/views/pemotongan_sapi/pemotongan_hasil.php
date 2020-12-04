@@ -315,7 +315,7 @@
             		</div>
 					<div class="form-gorup">
 						<label>Berat Karkas</label>
-						<input id="berat_karkas" style="width:10%;margin-bottom: 10px;" class="form-control" name="berat_karkas">
+						<input id="berat_karkas" type="number" style="width:10%;margin-bottom: 10px;" class="form-control" name="berat_karkas">
 					</div>
             		<div class="form-gorup">
             			<label>Power Load</label>
@@ -412,7 +412,7 @@
             		</div>
 					<div class="form-gorup">
 						<label>Berat Prosot</label>
-						<input id="berat_prosot2" autocomplete="off" style="width:25%;margin-bottom: 10px;" class="form-control" name="berat_prosot">
+						<input id="berat_prosot2" type="number" autocomplete="off" style="width:25%;margin-bottom: 10px;" class="form-control" name="berat_prosot">
 					</div>
             		<div class="form-gorup">
             			<label>Power Load</label>
