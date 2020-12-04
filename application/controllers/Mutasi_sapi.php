@@ -43,6 +43,7 @@ class Mutasi_sapi extends CI_Controller {
 						<tr>
 							<th><input type="checkbox" onClick="all_check(this)" /> <span class="lbl"></span></th>
 							<th>No.</th>
+							<th>EARTAG</th>
 							<th>RFID</th>
 							<th>Nota</th>
 							<th>Berat</th>
@@ -56,6 +57,7 @@ class Mutasi_sapi extends CI_Controller {
 								<span class="lbl"></span>
 							</td>
 							<td>'.$no.'</td>
+							<td>'.$data['eartag'].'</td>
 							<td>'.$data['rfid'].'</td>
 							<td>'.$data['nota'].'</td>
 							<td>'.$data['berat'].'</td>
@@ -73,6 +75,7 @@ class Mutasi_sapi extends CI_Controller {
 						<tr>
 							<th><input type="checkbox" onClick="all_check(this)" /> <span class="lbl"></span></th>
 							<th>No.</th>
+							<th>EARTAG</th>
 							<th>RFID</th>
 							<th>Nota</th>
 							<th>Berat</th>
@@ -86,6 +89,7 @@ class Mutasi_sapi extends CI_Controller {
 								<span class="lbl"></span>
 							</td>
 							<td>'.$no.'</td>
+							<td>'.$data['eartag'].'</td>
 							<td>'.$data['rfid'].'</td>
 							<td>'.$data['nota'].'</td>
 							<td>'.$data['berat'].'</td>
@@ -103,6 +107,7 @@ class Mutasi_sapi extends CI_Controller {
 					<thead>
 						<tr>
 							<th>No.</th>
+							<th>EARTAG</th>
 							<th>RFID</th>
 							<th>Nota</th>
 							<th>Berat</th>
@@ -114,6 +119,7 @@ class Mutasi_sapi extends CI_Controller {
 		foreach($get->result_array() as $data) { 
 					echo '<tr>
 							<td>'.$no.'</td>
+							<td>'.$data['eartag'].'</td>
 							<td>'.$data['rfid'].'</td>
 							<td>'.$data['nota'].'</td>
 							<td>'.$data['berat'].'</td>
