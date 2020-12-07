@@ -101,7 +101,7 @@ class laporan_pengerjaan_awo extends CI_Controller {
 		echo '<table id="dataTables-example" class="table table-bordered">
 					<thead>
 						<tr>
-							<th><input style="width:20px;height:20px;" type="checkbox" id="checkAll"/> All </th>
+							<th><input style="width:20px;height:20px;" type="checkbox" value="0"class="ceksemua" id="checkAll"/> All </th>
 							<th>No.</th>
 							<th>Nota</th>
 							<th>Shipment</th>
@@ -121,7 +121,7 @@ class laporan_pengerjaan_awo extends CI_Controller {
 		foreach($get->result_array() as $data) { 
 					echo '<tr>
 							<td>
-								<input style="width:20px;height:20px;" class="check" id="rel_id" type="checkbox" name="ck_id_detail[]" value="'.$data['id_penerimaan_detail'].'">
+								<input style="width:20px;height:20px;" class="checksemua" id="rel_id" type="checkbox" name="ck_id_detail[]" value="'.$data['id_penerimaan_detail'].'">
 								<span class="lbl"></span>
 							</td>
 							<td>'.$no.'</td>

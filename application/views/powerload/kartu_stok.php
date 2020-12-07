@@ -68,6 +68,8 @@
 								<th colspan="5" style="background: #22313F;color:#fff;">Masuk</th>
 								<th colspan="5" style="background: #22313F;color:#fff;">Pakai</th>
 								<th style="background: #22313F;color:#fff;">Saldo</th>
+								<th style="background: #22313F;color:#fff;">Peneumatic</th>
+								<th style="background: #22313F;color:#fff;">Score</th>
 							</tr>
 							<tr>
 								<th style="background: #22313F;color:#fff;"></th>
@@ -82,6 +84,8 @@
 								<th style="background: #22313F;color:#fff;">Hitam</th>
 								<th style="background: #22313F;color:#fff;">Kuning</th>
 								<th style="background: #22313F;color:#fff;">Total Qty</th>
+								<th style="background: #22313F;color:#fff;"></th>
+								<th style="background: #22313F;color:#fff;"></th>
 								<th style="background: #22313F;color:#fff;"></th>
 							</tr>
 						</thead>
@@ -129,13 +133,15 @@
 									</td>
 									<td colspan="10" style="text-align: left;">SALDO AWAL</td>
 									<td><?php echo $saldo_awal; ?></td>
+									<td></td>
+									<td></td>
 								</tr>
 						<?php
 								foreach($period as $dt) { 
 									$date_range = $dt->format( "Y-m-d" );
 									$data_masuk = $this->db->query("SELECT tanggal,merah,orange,hitam,kuning FROM powerload  WHERE tanggal ='$date_range' AND id_rph = '$id_rph'");
 
-									$data_keluar = $this->db->query("SELECT tanggal_potong,SUM(merah) as tot_merah,SUM(orange) as tot_orange,SUM(hitam) as tot_hitam,
+									$data_keluar = $this->db->query("SELECT tanggal_potong,SUM(peneumatic)as peneumatic,SUM(score_stune) as score,SUM(merah) as tot_merah,SUM(orange) as tot_orange,SUM(hitam) as tot_hitam,
 																	SUM(kuning) as tot_kuning FROM penerimaan_detail INNER JOIN pengiriman ON penerimaan_detail.id_pengiriman 
 																	= pengiriman.id_pengiriman WHERE penerimaan_detail.tanggal_potong ='$date_range' AND pengiriman.id_rph 
 																	= '$id_rph' AND status_potong >= '1' GROUP BY tanggal_potong");
@@ -172,6 +178,9 @@
 												 	echo $saldo_awal ;
 												 ?>											
 											</td>
+											<td>											
+											<td>											
+											</td>
 										</tr>
 					<?php 	$no++;	}
 
@@ -206,6 +215,9 @@
 												 	echo $saldo_awal ;
 												 ?>											
 											</td>
+											<td><?php echo $data_out["peneumatic"]; ?>											
+											<td><?php echo $data_out["score"]; ?>											
+											</td>
 										</tr>
 					<?php 			}
 						 		}
@@ -236,7 +248,7 @@
 							}
 						}
 
-						$data_single_out = $this->db->query("SELECT tanggal_potong,SUM(merah) as sd_merah,SUM(orange) as sd_orange,SUM(hitam) as sd_hitam,SUM(kuning) 
+						$data_single_out = $this->db->query("SELECT tanggal_potong,SUM(peneumatic) as peneumatic,SUM(score_stune) as score,SUM(merah) as sd_merah,SUM(orange) as sd_orange,SUM(hitam) as sd_hitam,SUM(kuning) 
 															as sd_kuning FROM penerimaan_detail INNER JOIN pengiriman ON penerimaan_detail.id_pengiriman = 
 															pengiriman.id_pengiriman WHERE penerimaan_detail.tanggal_potong <='$tanggal2' AND pengiriman.id_rph 
 															= '$id_rph' AND status_potong >= '1'");
@@ -246,11 +258,16 @@
 								$data_orange_out = $single_data_out['sd_orange'];
 								$data_hitam_out = $single_data_out['sd_hitam'];
 								$data_kuning_out = $single_data_out['sd_kuning'];
+								$data_peneumatic = $single_data_out['peneumatic'];
+								$data_score = $single_data_out['score'];
 							}
 						}
 
 					?>
 									<table class="table table-bordered" style="width:20%;">
+										<th colspan="2" style="background: #000;color: #fff;">
+											Ketersediaan Powerload
+										</th>
 										<tr>
 											<td style="width:100px;background: #000;color: #fff;">Merah</td>
 											<td style="text-align: right;"><?php 
@@ -287,6 +304,22 @@
 											<td>Total</td>
 											<td style="text-align: right;"><?php 
 													echo $data_merah + $data_orange + $data_hitam + $data_kuning;
+												?>												
+											</td>
+										</tr>
+									</table>
+									<table class="table table-bordered" style="width:20%;">
+										<tr>
+											<td style="width:200px;background: #000;color: #fff;">Total Peneumatic</td>
+											<td style="text-align: right;"><?php 
+													echo $data_peneumatic;
+												?>												
+											</td>
+										</tr>
+										<tr>
+											<td style="width:200px;background: #000;color: #fff;">Total Score</td>
+											<td style="text-align: right;"><?php 
+													echo $data_score;
 												?>												
 											</td>
 										</tr>

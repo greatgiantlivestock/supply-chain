@@ -1,4 +1,7 @@
 <script type="text/javascript">
+    	$(document).on("click", "#checkAll", function () { 
+			$('.checksemua').prop('checked', this.checked);
+        });
     	$(document).on("click", "#laporkan_admin", function () {
     		var id_pengiriman = $(this).attr('data-id_pengiriman');
         	$.ajax({
@@ -187,5 +190,16 @@
 			    </div>
 			</form>
         </div>
+		<!-- <script type="text/javascript">
+			$('#ModalLaporkan').ready(function(){
+				$(function() {
+					$('.ceksemua').click(function() {
+						$('.checksemua').attr('checked','checked');
+						console.log("cek semua")
+						// $('#ModalLaporkan #rel_id').prop('checked', this.checked);  
+					});
+				});
+			});
+		</script> -->
     </div>
 </div>
