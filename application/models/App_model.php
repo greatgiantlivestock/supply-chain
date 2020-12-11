@@ -833,7 +833,8 @@ class app_model extends CI_Model {
 		$hasil = "";
 		//$q = $this->db->query("SELECT no_pengiriman,id_pengiriman FROM pengiriman ORDER BY no_pengiriman DESC");
 		$q = $this->db->query("SELECT pengiriman.no_pengiriman,pengiriman.id_pengiriman FROM pengiriman JOIN movement_log ON 
-							pengiriman.id_pengiriman=movement_log.id_pengiriman WHERE move_from like '%GGL%' OR move_from like '%NTF%' OR move_from like '%PO%' 
+							pengiriman.id_pengiriman=movement_log.id_pengiriman WHERE pengiriman.status_terima='1' AND move_from like '%GGL%' 
+							OR pengiriman.status_terima='1' AND move_from like '%NTF%' OR pengiriman.status_terima='1' AND  move_from like '%PO%' 
 							ORDER BY pengiriman.no_pengiriman DESC");
 		$hasil .= '<option value>[Semua]</option>';
 		foreach($q->result() as $h) {

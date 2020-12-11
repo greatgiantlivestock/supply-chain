@@ -87,6 +87,7 @@
 									<th style="background: #22313F;color:#fff;">RFID</th>
 									<th style="background: #22313F;color:#fff;">Tgl.Kirim (feedlot)</th>
 									<th style="background: #22313F;color:#fff;">Tgl.Potong</th>
+									<th style="background: #22313F;color:#fff;">Jam Potong</th>
 									<th style="background: #22313F;color:#fff;">Umur</th>
 									<th style="background: #22313F;color:#fff;">BBD</th>
 									<th style="background: #22313F;color:#fff;">Karkas</th>
@@ -136,6 +137,7 @@
 											?>
 										</td>
 										<td><?php echo $data['tanggal_potong']; ?></td>
+										<td><?php echo $data['jam_potong']; ?></td>
 										<td><?php
 											if(!empty($data['tanggal_potong'])) {
 												if($data['transit']==1){
