@@ -302,7 +302,7 @@ class app_model extends CI_Model {
 			$q = $this->db->query("SELECT * FROM penerimaan_detail INNER JOIN pengiriman ON pengiriman.id_pengiriman = penerimaan_detail.id_pengiriman 
 								INNER JOIN movement_log ON pengiriman.id_pengiriman=movement_log.id_pengiriman
 								JOIN mst_rph_user ON mst_rph_user.id_rph=pengiriman.id_rph
-								WHERE mst_rph_user.id_awo = '$id' AND pengiriman.status_terima = '1' 
+								WHERE mst_rph_user.id_awo = '$id' AND pengiriman.status_terima = '1' AND status_potong <=1
 								AND asal_sapi like '%$asal_sapi%' ORDER BY penerimaan_detail.tanggal_potong DESC");
 		// }
 		return $q;
